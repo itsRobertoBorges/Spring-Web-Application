@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="myheader">
+    <div class="primary-nav">
+
+        <button href="#" class="hamburger open-panel nav-toggle">
+            <span class="screen-reader-text">Menu</span>
+        </button>
+
+        <nav role="navigation" class="menu">
+
+            <a href="#" class="logotype">Chef<span>Ville</span></a>
+
+            <div class="overflow-container">
+
+                <ul class="menu-dropdown">
+
+                    <li><a class="nav-link"
+                           th:classappend="${#httpServletRequest.getRequestURI() == '/registered/index' ? 'active':''}"
+                           th:aria-current="${#httpServletRequest.getRequestURI() == '/registered/index' ? 'page':''}"
+                           th:href="@{/registered/index}" th:text="'Home'"></a></li>
+
+
+                    <li><a class="nav-link"
+                           th:classappend="${#httpServletRequest.getRequestURI() == '/registered/create-recipe' ? 'active':''}"
+                           th:aria-current="${#httpServletRequest.getRequestURI() == '/registered/create-recipe' ? 'page':''}"
+                           th:href="@{/registered/create-recipe}" th:text="'Create Recipe'"></a></li>
+
+
+                    <li><a class="nav-link"
+                           th:classappend="${#httpServletRequest.getRequestURI() == '/registered/view-recipe' ? 'active':''}"
+                           th:aria-current="${#httpServletRequest.getRequestURI() == '/registered/view-recipe' ? 'page':''}"
+                           th:href="@{/registered/view-recipe}" th:text="'View Recipes'"></a></li>
+
+                    <li><a class="nav-link"
+                           th:classappend="${#httpServletRequest.getRequestURI() == '/registered/search-recipe' ? 'active':''}"
+                           th:aria-current="${#httpServletRequest.getRequestURI() == '/registered/search-recipe' ? 'page':''}"
+                           th:href="@{/registered/search-recipe}" th:text="'Search Recipes'"></a></li>
+
+                    <li><a class="nav-link"
+                           th:classappend="${#httpServletRequest.getRequestURI() == '/registered/plan-meal' ? 'active':''}"
+                           th:aria-current="${#httpServletRequest.getRequestURI() == '/registered/plan-meal' ? 'page':''}"
+                           th:href="@{/registered/plan-meal}" th:text="'Plan Meal'"></a></li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           th:classappend="${#httpServletRequest.getRequestURI() == '/registered/view-profile' ? 'active':''}"
+                           th:aria-current="${#httpServletRequest.getRequestURI() == '/registered/view-profile' ? 'page':''}"
+                           th:href="@{/registered/view-profile}" th:text="'View Profile'"></a>
+
+                    <li><a class="nav-link"
+                           th:href="@{/doLogout}" th:text="'Log Out'"></a></li>
+
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+    </div>
+
+    <div class="new-wrapper">
+    </div>
+</div>
+
+<script>
+    $('.nav-toggle').click(function(e) {
+
+        e.preventDefault();
+        $("html").toggleClass("openNav");
+        $(".nav-toggle").toggleClass("active");
+
+    });
+</script>
+</body>
+</html>
